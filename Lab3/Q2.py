@@ -1,14 +1,11 @@
 def is_pangram(sentence):
-    alph= 'abcdefghijklmnopqrstuvwxyz'.split()
-    if (sentence == alph):
-        return True
-    return False
+    alph = set('abcdefghijklmnopqrstuvwxyz')
+    sentence_set = set(filter(str.isalpha, sentence.lower()))
+    return alph <= sentence_set
 
-sentence= input("Enter a sentence: ")
+sentence = input("Enter a sentence: ")
 
-if(is_pangram(sentence.lower().split())):
-    print("'"+ sentence + "' is a panagram")
+if is_pangram(sentence):
+    print(f"'{sentence}' is a pangram")
 else:
-    print("'"+ sentence + "' is not a panagram")
-
-
+    print(f"'{sentence}' is not a pangram")
